@@ -1,36 +1,75 @@
-import React from 'react'
-import { Text, View, TouchableOpacity } from 'react-native'
-import moment from 'moment'
-import Complaints from '../assets/complaints.json'
+import React from 'react';
+import { Text, View, TouchableOpacity, FlatList } from 'react-native';
+import moment from 'moment';
+import Complaints from '../assets/complaints.json';
 
 const Complain = () => {
     return (
         <View style={{ flex: 1, padding: 15, justifyContent: 'flex-start' }}>
-            {
-                Complaints.map((item) => (
-                    <ComplainItem key={item.id} item={item} />
-                ))
-            }
+            <FlatList
+                style={{ flexGrow: 1 }}
+                contentContainerStyle={{ paddingTop: 15 }}
+                data={Complaints}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => <ComplainItem item={item} />}
+            />
         </View>
-    )
-}
-export default Complain
+    );
+};
+
+export default Complain;
 
 const ComplainItem = ({ item }) => {
     return (
-        <View style={{ padding: 15, backgroundColor: 'lightblue', borderRadius: 4, marginBottom: 15 }}>
+        <TouchableOpacity
+            style={{
+                padding: 15,
+                backgroundColor: 'white',
+                borderRadius: 4,
+                marginBottom: 15,
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 1 },
+                shadowOpacity: 0.2,
+                shadowRadius: 1,
+                elevation: 2,
+            }}
+        >
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
-                <Text style={{ fontWeight: "bold" }}>#{item.id}</Text>
-                <Text>{item.type}</Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 16 }}>#{item.id}</Text>
+                <Text style={{ fontSize: 16 }}>{item.type}</Text>
             </View>
-            <Text style={{ marginBottom: 10 }}>{item.workingStatus}</Text>
-            <Text style={{ marginBottom: 10 }}>{item.society}</Text>
-            <Text>{moment(item.reported).fromNow()}</Text>
-            <TouchableOpacity style={{ padding: 15, backgroundColor: 'white', borderRadius: 5, alignSelf: 'flex-end' }}>
-                <Text>
-                    View
-                </Text>
-            </TouchableOpacity>
-        </View>
-    )
-}
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }}>
+                <Text style={{ fontWeight: 'bold', marginRight: 5 }}>Working Status:</Text>
+                <Text>{item.workingStatus}</Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }}>
+                <Text style={{ fontWeight: 'bold', marginRight: 5 }}>Society:</Text>
+                <Text>{item.society}</Text>
+            </View>
+            <Text style={{ marginBottom: 10 }}>{moment(item.reported).fromNow()}</Text>
+            <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+                <TouchableOpacity
+                    style={{
+                        paddingVertical: 10,
+                        paddingHorizontal: 20,
+                        backgroundColor: '#00BFFF',
+                        borderRadius: 5,
+                        marginRight: 10,
+                    }}
+                >
+                    <Text style={{ color: 'white' }}>View</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={{
+                        paddingVertical: 10,
+                        paddingHorizontal: 20,
+                        backgroundColor: '#DC143C',
+                        borderRadius: 5,
+                    }}
+                >
+                    <Text style={{ color: 'white' }}>Delete</Text>
+                </TouchableOpacity>
+            </View>
+        </TouchableOpacity>
+    );
+};
