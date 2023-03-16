@@ -1,0 +1,26 @@
+[
+    {
+        "id": 2378,
+        "type": "Social",
+        "accuracy": "80%",
+        "latitude": "33.738045",
+        "longitude": "73.084488",
+        "image": "https://images.unsplash.com/photo-1559181567-c3190ca9959b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8b2JqZWN0fGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+    },
+    {
+        "id": 2380,
+        "type": "Environmental",
+        "accuracy": "90%",
+        "latitude": "43.738045",
+        "longitude": "83.084488",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCE8O1xd8G0WKoyVLaUmXaa5dDgumm0P6iRg&usqp=CAU"
+    },
+    {
+        "id": 2382,
+        "type": "Social",
+        "accuracy": "70%",
+        "latitude": "93.738045",
+        "longitude": "77.084488",
+        "image": "https://images.unsplash.com/photo-1618401586200-aebe217a4b1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Nnx8fGVufDB8fHx8&w=1000&q=80"
+    }
+]
