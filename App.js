@@ -1,30 +1,56 @@
 import 'react-native-gesture-handler'
-import { StyleSheet } from 'react-native';
+import { StyleSheet,Image } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/screens/Home';
 import Complain from './src/screens/Complains';
 import ReportIssue from './src/screens/ReportIssue';
 import ConfirmIssue from './src/screens/ConfirmIssue';
+import Onboarding from './src/screens/Onboarding';
+import Register from './src/screens/Register';
+import Login from './src/screens/Login';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useSelector,useDispatch } from 'react-redux';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItemList,
   DrawerItem
 } from '@react-navigation/drawer';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import {store,persistor} from './src/state/store'
+import { setUserInfo } from './src/state/actions/userActions';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
+
 const HomeStack = () => {
+  const {user,firstTime}=useSelector(state=>state.user)
+  const {token} = user;
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName={firstTime ? "Onboarding" : token ? "Home" : "Login"}>
       {/* <Stack.Screen
         name="Login"
         component={Login}
         options={{headerShown: false}}
       /> */}
+      <Stack.Screen
+        name="Onboarding"
+        component={Onboarding}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Home"
         component={AppDrawer}
@@ -38,13 +64,15 @@ const HomeStack = () => {
 };
 
 function CustomDrawerContent(props) {
+  const dispatch=useDispatch()
   return (
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />
       <DrawerItem
         label="Logout"
         onPress={() => {
-          console.log("Logout")
+          dispatch(setUserInfo({token:null}))
+          props.navigation.replace('Login');
         }}
       />
     </DrawerContentScrollView>
@@ -67,7 +95,11 @@ export default function App() {
     <NavigationContainer>
       <SafeAreaProvider>
         <SafeAreaView style={styles.container}>
-          <HomeStack />
+          <Provider store={store}>
+            <PersistGate persistor={persistor}>
+              <HomeStack />
+            </PersistGate>
+          </Provider>
         </SafeAreaView>
       </SafeAreaProvider>
     </NavigationContainer>

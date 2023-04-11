@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import moment from 'moment';
 import Complaints from '../assets/complaints.json';
-import { RNCamera, FaceDetector } from 'react-native-camera';
+import { RNCamera } from 'react-native-camera';
 
 const ReportIssue = ({ navigation }) => {
     const [cameraRef, setCameraRef] = useState(null);

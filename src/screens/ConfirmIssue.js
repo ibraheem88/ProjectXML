@@ -53,25 +53,25 @@ const IssueItem = ({ item, selected, setSelected }) => {
         <View style={{ padding: 15, backgroundColor: '#FFF', borderRadius: 10, marginBottom: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
             <View style={{ marginBottom: 10 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
-                    <Text style={{ fontWeight: "bold", marginRight: 5 }}>#{item.id}</Text>
+                    <Text style={{ fontWeight: "bold", marginRight: 5,color:'black'  }}>#{item.id}</Text>
                     <View style={{ backgroundColor: item.type === 'Social' ? '#3EB489' : '#F44336', paddingVertical: 5, paddingHorizontal: 10, borderRadius: 5 }}>
                         <Text style={{ color: '#FFF' }}>{item.type}</Text>
                     </View>
                     <Icon name={selected.includes(item.id) ? "checkbox-blank-circle" : "checkbox-blank-circle-outline"} color="black" size={22} style={{ marginLeft: 10 }} onPress={() => handleSelected()}
                     />
                 </View>
-                <Text style={{ marginBottom: 5 }}>Reported on {moment(item.timestamp).format('MMMM Do, YYYY')}</Text>
+                <Text style={{ marginBottom: 5,color:'black' }}>Reported on {moment(item.timestamp).format('MMMM Do, YYYY')}</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', marginRight: 5 }}>Accuracy:</Text>
-                    <Text>{item.accuracy}</Text>
+                    <Text style={{ fontWeight: 'bold', marginRight: 5 ,color: 'black'}}>Accuracy:</Text>
+                    <Text style={{color: 'black'}}>{item.accuracy}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', marginRight: 5 }}>Latitude:</Text>
-                    <Text>{item.latitude}</Text>
+                    <Text style={{ fontWeight: 'bold', marginRight: 5,color:'black'  }}>Latitude:</Text>
+                    <Text style={{color:'black' }}>{item.latitude}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontWeight: 'bold', marginRight: 5 }}>Longitude:</Text>
-                    <Text>{item.longitude}</Text>
+                    <Text style={{ fontWeight: 'bold', marginRight: 5,color:'black'  }}>Longitude:</Text>
+                    <Text style={{color:'black' }}>{item.longitude}</Text>
                 </View>
             </View>
             <Image source={{ uri: item.image }} style={{ width: 100, height: 100, borderRadius: 10 }} />

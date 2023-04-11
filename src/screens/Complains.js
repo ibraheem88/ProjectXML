@@ -35,18 +35,18 @@ const ComplainItem = ({ item }) => {
             }}
         >
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
-                <Text style={{ fontWeight: 'bold', fontSize: 16 }}>#{item.id}</Text>
-                <Text style={{ fontSize: 16 }}>{item.type}</Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 16,color: 'black' }}>#{item.id}</Text>
+                <Text style={{ fontSize: 16,color: 'black' }}>{item.type}</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }}>
-                <Text style={{ fontWeight: 'bold', marginRight: 5 }}>Working Status:</Text>
-                <Text>{item.workingStatus}</Text>
+                <Text style={{ fontWeight: 'bold', marginRight: 5,color: 'black' }}>Working Status:</Text>
+                <Text style={{color: 'black'}}>{item.workingStatus}</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }}>
-                <Text style={{ fontWeight: 'bold', marginRight: 5 }}>Society:</Text>
-                <Text>{item.society}</Text>
+                <Text style={{ fontWeight: 'bold', marginRight: 5,color: 'black' }}>Society:</Text>
+                <Text style={{color: 'black'}}>{item.society}</Text>
             </View>
-            <Text style={{ marginBottom: 10 }}>{moment(item.reported).fromNow()}</Text>
+            <Text style={{ marginBottom: 10 ,color: 'black'}}>{moment(item.reported).fromNow()}</Text>
             <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
                 <TouchableOpacity
                     style={{
